@@ -16,6 +16,13 @@ export const ROUTES: RouteInfo[] = [
     icon: "icon-atom",
     class: ""
   },
+  {
+    path: "/diary",
+    title: "Diary",
+    rtlTitle: "الرموز",
+    icon: "icon-notes",
+    class: ""
+  },
   
 ];
 
