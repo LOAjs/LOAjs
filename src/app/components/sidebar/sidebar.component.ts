@@ -17,11 +17,11 @@ export const ROUTES: RouteInfo[] = [
     class: ""
   },
   {
-    path: "/diary",
-    title: "Diary",
+    path: "/diary-main",
+    title: "Diary-main",
     rtlTitle: "الرموز",
     icon: "icon-notes",
-    class: ""
+    class: "" 
   },
   
 ];
