@@ -22,5 +22,5 @@ export const AdminLayoutRoutes: Routes = [
   //{ path: "typography", component: TypographyComponent },
   // { path: "rtl", component: RtlComponent }
   { path: "diary", component:  DiaryComponent },
-  { path: "diary-main", component:  DiaryMainComponent }
+  { path: "diary-main/:test", component:  DiaryMainComponent }
 ];

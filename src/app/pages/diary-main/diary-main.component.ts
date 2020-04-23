@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { stringify } from 'querystring';
 
@@ -11,8 +11,12 @@ import { stringify } from 'querystring';
 export class DiaryMainComponent implements OnInit {
 
   postId;
+  test;
 
-  constructor(private route:Router,private http: HttpClient) { }
+  constructor(private route:Router,private http: HttpClient,route2: ActivatedRoute) { 
+    this.test = route2.snapshot.params['test'];
+
+  }
 
   onSaveClick(){
     this.route.navigate(['diary'])

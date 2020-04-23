@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { HttpClient } from '@angular/common/http';
 
 declare interface RouteInfo {
   path: string;
@@ -7,24 +8,7 @@ declare interface RouteInfo {
   icon: string;
   class: string;
 }
-export const ROUTES: RouteInfo[] = [
-  
-  {
-    path: "/icons",
-    title: "Icons",
-    rtlTitle: "الرموز",
-    icon: "icon-atom",
-    class: ""
-  },
-  {
-    path: "/diary-main",
-    title: "Diary-main",
-    rtlTitle: "الرموز",
-    icon: "icon-notes",
-    class: "" 
-  },
-  
-];
+export const ROUTES = [];
 
 @Component({
   selector: "app-sidebar",
@@ -32,13 +16,36 @@ export const ROUTES: RouteInfo[] = [
   styleUrls: ["./sidebar.component.css"]
 })
 export class SidebarComponent implements OnInit {
+  postId;
   menuItems: any[];
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
+    
+    
+    this.http.get<any>('http://localhost:3000/getmonth').subscribe(data => {
+      this.postId = data;
+
+      for (let k of this.postId) {
+    
+        ROUTES.push(
+          {
+            path: "/diary-main/" +k.dates,
+            title: k.dates + "("+k.count+")",
+            rtlTitle: "",
+            icon: "icon-notes",
+            class: ""
+        
+          });
+      } 
+      
+      this.menuItems = ROUTES.filter(menuItem => menuItem)
+      })
+      
+
   }
+  
   isMobileMenu() {
     if (window.innerWidth > 991) {
       return false;
