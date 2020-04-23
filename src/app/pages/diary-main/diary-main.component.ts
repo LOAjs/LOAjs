@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { stringify } from 'querystring';
 
 @Component({
   selector: 'app-diary-main',
@@ -8,13 +10,21 @@ import { Router } from '@angular/router';
 })
 export class DiaryMainComponent implements OnInit {
 
-  constructor(private route:Router) { }
+  postId;
+
+  constructor(private route:Router,private http: HttpClient) { }
 
   onSaveClick(){
     this.route.navigate(['diary'])
 }
 
   ngOnInit(): void {
+    this.http.get<any>('http://localhost:3000/test/').subscribe(data => {
+        this.postId = data[0];
+        })
+
+        
+        
   }
 
 }

@@ -15,6 +15,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
 import { DiaryMainComponent } from './pages/diary-main/diary-main.component';
 
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
